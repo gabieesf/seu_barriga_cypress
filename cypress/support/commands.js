@@ -1,4 +1,9 @@
-import secret from "../fixtures/secret.json"
+import secret from "../fixtures/secret.json";
+import faker from 'faker';
+
+const valueRandom = faker.name.findName()
+const emailRandom = faker.internet.email()
+
 
 Cypress.Commands.add('fillInName', function(){
     cy.get('#email')
@@ -25,7 +30,30 @@ Cypress.Commands.add('clickButton', function(){
       .click()
 })
 
-//Cypress.Commands.add('buttonForgotPassword', function(){
-//  cy.get('[class="alert alert-success"]')
-//      .click()
-//})
+Cypress.Commands.add('fillInNewName', function(){
+  cy.get("#nome")
+      .type(valueRandom.toString())
+})
+
+Cypress.Commands.add('fillInNewEmail', function(){
+  cy.get("#email")
+      .type(emailRandom.toString())
+})
+
+Cypress.Commands.add('fillInPassword', function(){
+  cy.get('#senha')
+    .type(secret.password)
+})
+
+Cypress.Commands.add('clickInRegister', function(){
+  cy.get("body > div.jumbotron.col-lg-4 > form > input")
+      .click()
+})
+
+
+
+
+
+
+
+
