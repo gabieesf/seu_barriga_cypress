@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - env:
+        PASSWORD: ${{ secrets.PASSWORD }}
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -21,12 +24,10 @@ jobs:
 
       - name: Install dependencies including faker
         run: |
+          echo $PASSWORD
           npm install
           npm install faker --save-dev
 
       - name: Run Cypress
         run: npx cypress run
 
-      - name: Hello world action
-        env: # Or as an environment variable
-          super_secret: ${{ secrets.SuperSecret }}
