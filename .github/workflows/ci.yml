@@ -9,10 +9,7 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Hello world action
-        env:
-          PASSWORD: ${{ secrets.PASSWORD }}
+    steps:       
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -24,10 +21,13 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies including faker
+        env:
+            PASSWORD: ${{ secrets.PASSWORD }}
         run: |
           echo $PASSWORD
           npm install
           npm install faker --save-dev
+          
 
       - name: Run Cypress
         run: npx cypress run
