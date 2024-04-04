@@ -1,4 +1,3 @@
-import secret from "../fixtures/secret.json";
 import faker from 'faker';
 
 const valueRandom = faker.name.findName()
@@ -8,7 +7,7 @@ const emailRandom = faker.internet.email()
 Cypress.Commands.add('fillInName', function(){
     cy.get('#email')
       .type("0204@gmail.com")
-}) 
+})
 
 Cypress.Commands.add('fillInInvalidName', function(){
   cy.get('#email')
