@@ -18,8 +18,11 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies including faker
+        run: |
+          npm install
+          npm install faker --save-dev
 
       - name: Run Cypress
         run: npx cypress run
+
