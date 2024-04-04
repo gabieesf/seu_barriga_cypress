@@ -20,15 +20,14 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install dependencies including faker
-        env:
-            PASSWORD: ${{ secrets.PASSWORD }}
-        run: |
-          echo $PASSWORD
+      - name: Install dependencies including faker        
+        run: |    
           npm install
           npm install faker --save-dev
           
 
       - name: Run Cypress
-        run: npx cypress run
+        env:
+            PASSWORD: ${{ secrets.PASSWORD }}
+        run: npx cypress run --env pwd=$PASSWORD
 
