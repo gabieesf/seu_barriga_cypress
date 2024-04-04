@@ -10,11 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - env:
+        PASSWORD: ${{ secrets.PASSWORD }}
+
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Copiar a pasta ignorada
-        run: cp -r cypress/fixtures
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -23,6 +24,7 @@ jobs:
 
       - name: Install dependencies including faker
         run: |
+          echo $PASSWORD
           npm install
           npm install faker --save-dev
 
