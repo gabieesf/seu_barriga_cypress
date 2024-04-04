@@ -7,7 +7,7 @@ const emailRandom = faker.internet.email()
 
 Cypress.Commands.add('fillInName', function(){
     cy.get('#email')
-      .type(0204@gmail.com)
+      .type("0204@gmail.com")
 }) 
 
 Cypress.Commands.add('fillInInvalidName', function(){
@@ -17,7 +17,7 @@ Cypress.Commands.add('fillInInvalidName', function(){
 
 Cypress.Commands.add('fillInPassword', function(){
   cy.get('#senha')
-    .type(secret.password)
+    .type(Cypress.env('pwd'))
 }) 
 
 Cypress.Commands.add('fillInInvalidPassword', function(){
@@ -42,7 +42,7 @@ Cypress.Commands.add('fillInNewEmail', function(){
 
 Cypress.Commands.add('fillInPassword', function(){
   cy.get('#senha')
-    .type(secret.password)
+    .type(Cypress.env('pwd'))
 })
 
 Cypress.Commands.add('clickInRegister', function(){
