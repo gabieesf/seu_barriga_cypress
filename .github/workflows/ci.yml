@@ -13,19 +13,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '16'
 
-      - name: Install dependencies
-        run: npm install
-
-      # - name: Start Local Server
-      #   run: npx serverest &
-
-      # - name: Wait for Server to Start
-      #   run: sleep 10
+      - name: Install dependencies including faker
+        run: |
+          npm install
+          npm install faker --save-dev
 
       - name: Run Cypress
         run: npx cypress run
+
+      - name: Hello world action
+        env: # Or as an environment variable
+          super_secret: ${{ secrets.SuperSecret }}
