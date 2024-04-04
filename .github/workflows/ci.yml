@@ -10,8 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - env:
-        PASSWORD: ${{ secrets.PASSWORD }}
+      - name: Hello world action
+        env:
+          PASSWORD: ${{ secrets.PASSWORD }}
 
       - name: Checkout code
         uses: actions/checkout@v4
