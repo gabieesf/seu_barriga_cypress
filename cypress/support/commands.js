@@ -6,7 +6,7 @@ const emailRandom = faker.internet.email()
 
 Cypress.Commands.add('fillInName', function(){
     cy.get('#email')
-      .type("0204@gmail.com")
+      .type("02@gmail.com")
 })
 
 Cypress.Commands.add('fillInInvalidName', function(){
