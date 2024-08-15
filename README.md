@@ -22,12 +22,10 @@ cd seu_barriga_cypress
 npm install
 npm install faker --save-dev
 ```
-## Configuração
-Antes de executar os testes, certifique-se de configurar quaisquer variáveis de ambiente necessárias.
 
 ## Execução dos Testes
 Para executar os testes, utilize o seguinte comando: 
 ```bash
-export PASSWORD=yourPassword && npx cypress run --env pwd="$PASSWORD"
+npx cypress run 
 ```
 Este comando irá iniciar o Cypress e executar todos os testes automatizados.
