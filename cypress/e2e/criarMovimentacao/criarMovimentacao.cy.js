@@ -12,6 +12,11 @@ beforeEach(function() {
     cy.get('a[href^="/movimentacao"]').click()
 })
 
+afterEach(() => {
+    cy.clearLocalStorage();
+    cy.clearCookies();
+})
+
 it('Adicionar receita paga com sucesso', function() {
     cy.selectReceita()
     cy.fillInMovimentDate('24/07/2024')
@@ -26,7 +31,6 @@ it('Adicionar receita paga com sucesso', function() {
         .should('be.visible')
         .should('have.text', 'Movimentação adicionada com sucesso!')
 })
-
 it('Adicionar receita pendente com sucesso', function() {
     cy.selectReceita()
     cy.fillInMovimentDate('24/07/2024')
@@ -82,7 +86,83 @@ it('Adicionar data de movimentação inválida', function() {
     cy.selectConta('Conta teste')
     cy.selectPago()
     cy.clickSave2()
+    cy.get('.alert ul li:nth-child(1)')
+        .should('be.visible')
+        .should('have.text', "Data da Movimentação inválida (DD/MM/YYYY)")
+    cy.get('.alert ul li:nth-child(2)')
+        .should('be.visible')
+        .should('have.text', "Data da Movimentação deve ser menor ou igual à data atual")
+})
+
+it('Adicionar data de pagamento inválida', function() {
+    cy.selectReceita()
+    cy.fillInMovimentDate('24/07/2024')
+    cy.fillInPaymentDate('40/01/2024')
+    cy.fillInDescription('Salário')
+    cy.fillInInteressado('Colaborador')
+    cy.fillInValue('1412')
+    cy.selectConta('Conta teste')
+    cy.selectPago()
+    cy.clickSave2()
+    cy.get('.alert > ul > li')
+        .should('be.visible')
+        .should('have.text', "Data do pagamento inválida (DD/MM/YYYY)")
+})
+
+it('Adicionar data de movimentação inferior a de pagamento', function() {
+    cy.selectReceita()
+    cy.fillInMovimentDate('23/07/2024')
+    cy.fillInPaymentDate('24/07/2024')
+    cy.fillInDescription('Salário')
+    cy.fillInInteressado('Colaborador')
+    cy.fillInValue('1412')
+    cy.selectConta('Conta teste')
+    cy.selectPago()
+    cy.clickSave2()
     cy.get(msgAlerta)
         .should('be.visible')
-        .should('have.text', 'Data da Movimentação inválida (DD/MM/YYYY)” e “Data da Movimentação deve ser menor ou igual à data atual')
+        .should('have.text', "Data de movimentação inválida")
+})
+
+it('Adicionar descrição vazia', function() {
+    cy.selectDespesa()
+    cy.fillInMovimentDate('26/07/2024')
+    cy.fillInPaymentDate('26/07/2024')
+    cy.fillInInteressado('Teste2')
+    cy.fillInValue('987')
+    cy.selectConta('Conta teste')
+    cy.selectPendente()
+    cy.clickSave2()
+    cy.get('.alert > ul > li')
+        .should('be.visible')
+        .should('have.text', "Descrição é obrigatório")
+})
+
+it('Adicionar “Interessado” com nome vazio', function() {
+    cy.selectReceita()
+    cy.fillInMovimentDate('23/07/2024')
+    cy.fillInPaymentDate('24/07/2024')
+    cy.fillInDescription('Renda Extra')
+    cy.fillInValue('1412')
+    cy.selectConta('Conta teste')
+    cy.selectPago()
+    cy.clickSave2()
+    cy.get('.alert > ul > li')
+        .should('be.visible')
+        .should('have.text', "Interessado é obrigatório")
+})
+
+it('Adicionar movimentação com valor negativo', function() {
+    cy.selectReceita()
+    cy.fillInMovimentDate('24/07/2024')
+    cy.fillInPaymentDate('24/07/2024')
+    cy.fillInDescription('Salário')
+    cy.fillInInteressado('Colaborador')
+    cy.fillInValue('-1412')
+    cy.selectConta('Conta teste')
+    cy.selectPago()
+    cy.clickSave2()
+    cy.get(msgAlerta)
+        .should('be.visible')
+        .should('have.text', "Não é possível ter um valor de movimentação negativo")
 })
