@@ -53,7 +53,7 @@ describe('Login', function() {
           .should('have.text', 'Senha é um campo obrigatório')
   })
 
-  it.only('Login com o campo email vazio', function() {
+  it('Login com o campo email vazio', function() {
     cy.fillInPassword('123456')
     cy.clickButton()
     cy.get(msgAlerta)
