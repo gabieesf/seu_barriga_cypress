@@ -1,4 +1,4 @@
-import '../../page/AdicionarConta/AdicionarPage'
+import '../../page/AdicionarConta/AdicionarPage.js'
 import '../../page/LoginPage/LoginPage'
 import '../../page/ListarPage/ListarPage'
 import { faker } from '@faker-js/faker';
