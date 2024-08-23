@@ -19,7 +19,7 @@ beforeEach(function() {
   ];
 
   if (testTitlesToRunBeforeEach.includes(this.currentTest.title)) {
-    cy.ApagarConta();
+    cy.deleteAccount();
     cy.get('.dropdown-toggle').click()
     cy.get('a[href^="/addConta"]').click()
   }
@@ -31,7 +31,7 @@ afterEach(function() {
   ];
 
   if (testTitlesToRunAfterEach.includes(this.currentTest.title)) {
-    cy.ApagarConta();
+    cy.deleteAccount();
   }
 })
 

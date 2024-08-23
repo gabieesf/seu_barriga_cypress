@@ -1,4 +1,4 @@
-Cypress.Commands.add('ApagarConta', function(){
+Cypress.Commands.add('deleteAccount', function(){
     cy.get('.dropdown-toggle').click()
     cy.get('a[href^="/contas"]').click()
     cy.get('.glyphicon-remove-circle').click()

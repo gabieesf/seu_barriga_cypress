@@ -1,8 +1,8 @@
-Cypress.Commands.add('selectReceita', function(){
+Cypress.Commands.add('selectRecipe', function(){
     cy.get('#tipo').select('Receita');
 })
 
-Cypress.Commands.add('selectDespesa', function(){
+Cypress.Commands.add('selectExpense', function(){
     cy.get('#tipo').select('Despesa');
 })
 
@@ -21,7 +21,7 @@ Cypress.Commands.add('fillInDescription', function(text){
       .type(text)
 })
 
-Cypress.Commands.add('fillInInteressado', function(text){
+Cypress.Commands.add('fillInInterested', function(text){
   cy.get('#interessado')
     .type(text)
 })
@@ -32,7 +32,7 @@ Cypress.Commands.add('fillInValue', function(valor){
       .type(valor)
 })
 
-Cypress.Commands.add('selectConta', function(Account) {
+Cypress.Commands.add('selectAccount', function(Account) {
   cy.get('.form-control option').each(($el) => {  
       if ($el.text().trim() === Account) {  
           cy.wrap($el).click({ force: true });
@@ -40,12 +40,12 @@ Cypress.Commands.add('selectConta', function(Account) {
   });
 });
 
-Cypress.Commands.add('selectPago', function(){
+Cypress.Commands.add('selectPaid', function(){
     cy.get('#status_pago')
       .click()
 })
 
-Cypress.Commands.add('selectPendente', function(){
+Cypress.Commands.add('selectPending', function(){
     cy.get('#status_pendente')
       .click()
 })
