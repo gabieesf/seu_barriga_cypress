@@ -1,6 +1,6 @@
 Cypress.Commands.add('fillInName', function(name){
-    cy.get('#email')
-      .type(name)
+  cy.get('#email')
+    .type(name)
 })
 
 Cypress.Commands.add('fillInPassword', function(password){

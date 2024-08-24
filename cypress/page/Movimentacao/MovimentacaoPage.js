@@ -26,7 +26,6 @@ Cypress.Commands.add('fillInInterested', function(text){
     .type(text)
 })
 
-
 Cypress.Commands.add('fillInValue', function(valor){
     cy.get('#valor')
       .type(valor)
