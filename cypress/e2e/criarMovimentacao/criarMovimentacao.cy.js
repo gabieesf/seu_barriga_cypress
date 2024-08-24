@@ -1,6 +1,7 @@
 import '../../page/Movimentacao/MovimentacaoPage'
 import '../../page/LoginPage/LoginPage'
 
+describe('Criar Movimentação', function() {
 const url='https://seubarriga.wcaquino.me/login'
 const msgAlerta='.alert'
 
@@ -160,4 +161,5 @@ it('Adicionar movimentação com valor negativo', function() {
     cy.get(msgAlerta)
         .should('be.visible')
         .should('have.text', "Não é possível ter um valor de movimentação negativo")
+})
 })

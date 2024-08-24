@@ -1,11 +1,13 @@
-import '../../page/adicionarConta/AdicionarPage.js'
+import '../../page/AdicionarContaPage/AdicionarPage'
 import '../../page/LoginPage/LoginPage'
 import '../../page/ListarPage/ListarPage'
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker'
+
+describe('Adicionar Conta', function() {
 
 const url='https://seubarriga.wcaquino.me/login'
 const msgAlerta='.alert'
-const randomName = faker.name.lastName();
+const randomName = faker.name.lastName()
 
 beforeEach(function() {
   cy.visit(url)
@@ -16,8 +18,7 @@ beforeEach(function() {
   cy.get('a[href^="/addConta"]').click()
   const testTitlesToRunBeforeEach = [
     'Adicionar conta com nome muito extenso'
-  ];
-
+  ]
   if (testTitlesToRunBeforeEach.includes(this.currentTest.title)) {
     cy.deleteAccount();
     cy.get('.dropdown-toggle').click()
@@ -27,11 +28,11 @@ beforeEach(function() {
 
 afterEach(function() {
   const testTitlesToRunAfterEach = [
-    'Adicionar conta com nome já existente',
-  ];
+    'Adicionar conta com nome já existente'
+  ]
 
   if (testTitlesToRunAfterEach.includes(this.currentTest.title)) {
-    cy.deleteAccount();
+    cy.deleteAccount()
   }
 })
 
@@ -73,4 +74,4 @@ it('Adicionar conta com nome muito extenso', function() {
     .should('be.visible')
     .should('have.text', 'Nome muito extenso')
 })
-
+})
