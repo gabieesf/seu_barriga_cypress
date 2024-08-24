@@ -1,4 +1,4 @@
-import '../../page/Movimentacao/MovimentacaoPage'
+import '../../page/MovimentacaoPage/MovimentacaoPage'
 import '../../page/LoginPage/LoginPage'
 
 describe('Criar Movimentação', function() {

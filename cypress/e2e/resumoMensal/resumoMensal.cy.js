@@ -1,6 +1,5 @@
 import '../../page/LoginPage/LoginPage'
 import '../../page/ResumoMensal/ResumoMensalPage'
-import { faker } from '@faker-js/faker'
 describe('Resumo Mensal', function() {
 
 const url='https://seubarriga.wcaquino.me/login'

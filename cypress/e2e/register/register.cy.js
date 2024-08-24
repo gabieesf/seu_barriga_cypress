@@ -1,4 +1,4 @@
-import faker from 'faker';
+import faker from 'faker'
 import '../../page/RegisterPage/RegisterPage'
 describe('Cadastro', function() {  
   const emailRandom = faker.internet.email()
