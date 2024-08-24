@@ -20,10 +20,9 @@ beforeEach(function() {
     'Remover contas sem movimentação ativa'
   ]    
   if (testTitlesToRunBeforeEach.includes(this.currentTest.title)) {
-    cy.deleteAccount();
+    cy.deleteAccount()
   }
 })
-
 
 it('Listar contas adicionadas com sucesso', function() {
   cy.get('#tabelaContas')

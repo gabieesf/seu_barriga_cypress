@@ -1,6 +1,6 @@
 import faker from 'faker';
 import '../../page/RegisterPage/RegisterPage'
-describe('Register', function() {  
+describe('Cadastro', function() {  
   const emailRandom = faker.internet.email()
 
   beforeEach(function() {
