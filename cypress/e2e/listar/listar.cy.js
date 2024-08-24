@@ -37,7 +37,7 @@ it('Remover contas com movimentações ativas', function() {
     cy.deleteAccount()
     cy.get(msgAlerta)
       .should('be.visible')
-      .should('have.text', 'Conta em uso na movimentações')
+      .should('have.text', 'Conta em uso nas movimentações')
 })
 
 it('Remover contas sem movimentação ativa', function() {
